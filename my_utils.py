@@ -5,6 +5,7 @@ import importlib
 import collections
 import pickle, os
 from IPython.display import display
+import traceback
 
 
 def pandas_display(func):
@@ -38,7 +39,7 @@ def display_df(_df, exclude_cols, properties):
 def pickle_save(obj, file_name):
     with open(file_name, 'wb') as file:
         pickle.dump(obj, file)
-        print(f'Uploaded as pickle {os.path.realpath(file.name)}')
+        print(f'Saved as pickle {os.path.realpath(file.name)}')
         
         
 def pickle_load(file_name):
@@ -70,3 +71,17 @@ def check_dir(directory):
         os.makedirs(directory)
         print(f'Created {directory}')
 
+
+class MyErrorCatcher():
+    def __enter__(self):
+        self.file = open('my_output.txt', 'a+')
+        self.file.write(time.ctime() + '\n')
+        
+    def __exit__(self, exc_type, exc_value, tb):
+        self.file.write(time.ctime() + '\n')
+        if exc_type:
+            self.file.write(str(exc_type) + '\n')
+            self.file.write(str(exc_value) + '\n')
+            for x in traceback.format_tb(tb):
+                self.file.write(str(x) + '\n')
+        self.file.close()
