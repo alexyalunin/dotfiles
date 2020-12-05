@@ -16,8 +16,8 @@ function doIt() {
 	ln -sf $(pwd)/init ~
 	for file in `ls -d .??*`; do 
 		if [[ "$file" != ".git" ]]; then
-			echo $(pwd)/${file}
 			ln -sf $(pwd)/${file} ~
+			echo Created $(pwd)/${file}
 		fi
 	done
 }
