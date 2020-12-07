@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# convert .ipynb to .py
+alias notebook_to_python="jupyter nbconvert --to script"
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
