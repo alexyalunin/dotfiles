@@ -52,6 +52,7 @@ def reload(library):
 
 
 def display_model_modules(model, sorted=True):
+	print(f'Total number of parameters: {model.num_parameters()}')
     d = collections.Counter()
     for name, parameter in model.named_parameters():
         d[name] = parameter.numel()
