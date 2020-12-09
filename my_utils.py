@@ -3,11 +3,36 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import importlib 
 import collections
-import pickle, os, time
+import pickle, os, time, sys
 from IPython.display import display
 import traceback
 
 
+def print_torch(torch):
+    use_cuda = torch.cuda.is_available()
+    device = torch.device("cuda" if use_cuda else "cpu")
+    n_gpu = torch.cuda.device_count()
+    print("python:", sys.version)
+    print("torch:", torch.__version__)
+    print(f'use_cuda: {use_cuda}, n_gpu: {n_gpu}, devices:{[torch.cuda.get_device_name(i) for i in range(n_gpu)]}')
+    return use_cuda, device, n_gpu
+
+
+def print_packages(*args):
+    for lib in args:
+        print(f'{lib.__name__}: {lib.__version__}')
+        print(lib.__file__)
+
+
+def seed_everything(seed, random, os, np, torch):
+    random.seed(seed)
+    os.environ['PYTHONHASHSEED'] = str(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.backends.cudnn.deterministic = True
+
+    
 def pandas_display(func):
     default_1 = pd.options.display.max_rows
     default_2 = pd.options.display.max_colwidth
@@ -52,7 +77,7 @@ def reload(library):
 
 
 def display_model_modules(model, sorted=True):
-	print(f'Total number of parameters: {model.num_parameters()}')
+    print(f'Total number of parameters: {model.num_parameters()}')
     d = collections.Counter()
     for name, parameter in model.named_parameters():
         d[name] = parameter.numel()
