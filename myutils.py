@@ -6,6 +6,7 @@ import collections
 import pickle, os, time, sys
 from IPython.display import display
 import traceback
+import json
 
 
 def print_torch(torch):
@@ -61,10 +62,17 @@ def display_df(_df, exclude_cols, properties):
     display(_df.style.set_properties(**properties))
     
     
-def pickle_save(obj, file_name):
+def pickle_dump(obj, file_name):
     with open(file_name, 'wb') as file:
         pickle.dump(obj, file)
         print(f'Saved as pickle {os.path.realpath(file.name)}')
+        
+        
+def json_dump(obj, file_name):
+    assert isinstance(obj, dict), f"{obj} is not a dict"
+    with open(file_name, 'w') as file:
+        json.dump(obj, file)
+        print(f'Saved as json {os.path.realpath(file.name)}')
         
         
 def pickle_load(file_name):
