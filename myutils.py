@@ -7,6 +7,17 @@ import pickle, os, time, sys
 from IPython.display import display
 import traceback
 import json
+import subprocess
+
+
+def overwrite_file(new_file, old_file):
+    print(f'Overwriting {old_file} with {new_file}')
+    bashCmd = ["cp", new_file, old_file]
+    process = subprocess.Popen(bashCmd, stdout=subprocess.PIPE)
+    output, error = process.communicate()
+    print('output:', output)
+    print('error:', error)
+    return output, error
 
 
 def print_torch(torch):
