@@ -67,17 +67,24 @@ def pickle_dump(obj, file_name):
         pickle.dump(obj, file)
         print(f'Saved as pickle {os.path.realpath(file.name)}')
         
-        
+
+def pickle_load(file_name):
+    with open(file_name, 'rb') as file:
+        res = pickle.load(file)
+    return res
+
+
 def json_dump(obj, file_name):
     assert isinstance(obj, dict), f"{obj} is not a dict"
     with open(file_name, 'w') as file:
         json.dump(obj, file)
         print(f'Saved as json {os.path.realpath(file.name)}')
         
-        
-def pickle_load(file_name):
-    with open(file_name, 'rb') as file:
-        return pickle.load(file)
+
+def json_load(file_name):
+    with open(file_name, 'r') as file:
+        res = json.loads(file.read())
+    return res
 
 
 def reload(library):
@@ -109,7 +116,7 @@ def check_dir(directory):
 class MyErrorCatcher():
     def __enter__(self, dir='./'):
         self.file = open(dir+'my_output.txt', 'a+')
-        self.file.write(time.ctime() + '\n')
+        self.file.write(time.ctime() + ' STARTED' + '\n')
         
     def __exit__(self, exc_type, exc_value, tb):
         self.file.write(time.ctime() + '\n')
