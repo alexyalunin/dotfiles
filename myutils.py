@@ -107,8 +107,8 @@ def check_dir(directory):
 
 
 class MyErrorCatcher():
-    def __enter__(self):
-        self.file = open('my_output.txt', 'a+')
+    def __enter__(self, dir='./'):
+        self.file = open(dir+'my_output.txt', 'a+')
         self.file.write(time.ctime() + '\n')
         
     def __exit__(self, exc_type, exc_value, tb):
