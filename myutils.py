@@ -125,15 +125,25 @@ def check_dir(directory):
 
 
 class MyErrorCatcher():
-    def __enter__(self, dir='./'):
-        self.file = open(dir+'my_output.txt', 'a+')
-        self.file.write(time.ctime() + ' STARTED' + '\n')
+    def __enter__(self, file_path='./my_output.txt'):
+#         self.file = open(file_path, 'a+')
+        self.file = open(file_path, 'w')
+        self.write('STARTED')
+        return self
+    
+    def write(self, message):
+        self.file.write(time.ctime() + ': ' + message + '\n')
+        
+    def flush(self):
+        self.file.flush()
         
     def __exit__(self, exc_type, exc_value, tb):
-        self.file.write(time.ctime() + '\n')
+        self.write('FINISHED')
         if exc_type:
             self.file.write(str(exc_type) + '\n')
             self.file.write(str(exc_value) + '\n')
             for x in traceback.format_tb(tb):
                 self.file.write(str(x) + '\n')
         self.file.close()
+
+        
