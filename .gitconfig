@@ -8,6 +8,8 @@
 	email = ale.yalunin@gmail.com
 [alias]
 	s = status
+	st = status
+	unstash = checkout stash@{0} -- 
 	ac = !git add -A && git commit -m 'commit'
 	acpd = !git add -A && git commit -m 'commit' && git remote | xargs -L1 git push --all
 	acp = "!f() { git add -A && git commit -m "${1}" && git remote | xargs -L1 git push --all; }; f"
