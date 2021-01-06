@@ -132,6 +132,7 @@ class MyErrorCatcher():
         return self
     
     def write(self, message):
+        print(message)
         self.file.write(time.ctime() + ': ' + message + '\n')
         
     def flush(self):

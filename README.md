@@ -23,6 +23,7 @@ or
 
 ## todo
 - [ ] git acp
+- [ ] jupyter lab config
 - [ ] Identity added: /Users/Alexander/.ssh/id_git_alexyalunin
 - [x] macos
 - [x] extras

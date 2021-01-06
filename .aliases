@@ -17,10 +17,11 @@ alias ...="cd ../.."
 # fi
 
 alias rg='rg --hidden'
+alias lt="ls -AhlFtr"
 alias ll="ls -AhlF"
 alias la="ls -A"
 alias c='clear'
-
+alias d='deactivate'
 # # List only directories
 # alias lsd="ls -lF | grep --color=never '^d'"
 
