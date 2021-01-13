@@ -74,26 +74,26 @@ def display_df(_df, exclude_cols, properties):
     
     
 def pickle_dump(obj, file_name):
-    with open(file_name, 'wb') as file:
+    with open(file_name, 'wb', encoding='utf-8') as file:
         pickle.dump(obj, file)
         print(f'Saved as pickle {os.path.realpath(file.name)}')
         
 
 def pickle_load(file_name):
-    with open(file_name, 'rb') as file:
+    with open(file_name, 'rb', encoding='utf-8') as file:
         res = pickle.load(file)
     return res
 
 
 def json_dump(obj, file_name):
     assert isinstance(obj, dict), f"{obj} is not a dict"
-    with open(file_name, 'w') as file:
+    with open(file_name, 'w', encoding='utf-8') as file:
         json.dump(obj, file)
         print(f'Saved as json {os.path.realpath(file.name)}')
         
 
 def json_load(file_name):
-    with open(file_name, 'r') as file:
+    with open(file_name, 'r', encoding='utf-8') as file:
         res = json.loads(file.read())
     return res
 
