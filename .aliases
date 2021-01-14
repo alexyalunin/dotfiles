@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# clear output of jupyter notebook
+alias clear_notebook="jupyter nbconvert --clear-output --inplace"
+
 # convert .ipynb to .py
 alias notebook_to_python="jupyter nbconvert --to script"
 
