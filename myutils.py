@@ -74,13 +74,13 @@ def display_df(_df, exclude_cols, properties):
     
     
 def pickle_dump(obj, file_name):
-    with open(file_name, 'wb', encoding='utf-8') as file:
+    with open(file_name, 'wb') as file:
         pickle.dump(obj, file)
         print(f'Saved as pickle {os.path.realpath(file.name)}')
         
 
 def pickle_load(file_name):
-    with open(file_name, 'rb', encoding='utf-8') as file:
+    with open(file_name, 'rb') as file:
         res = pickle.load(file)
     return res
 
@@ -125,6 +125,10 @@ def check_dir(directory):
 
 
 class MyErrorCatcher():
+	"""
+	with myutils.MyErrorCatcher() as mec:
+		for t in tqdm.tqdm(..., total=..., file=mec):
+	"""
     def __enter__(self, file_path='./my_output.txt'):
 #         self.file = open(file_path, 'a+')
         self.file = open(file_path, 'w')
