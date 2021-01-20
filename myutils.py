@@ -130,7 +130,7 @@ class MyErrorCatcher():
 		for t in tqdm.tqdm(..., total=..., file=mec):
 	"""
     def __enter__(self, file_path='./my_output.txt'):
-#         self.file = open(file_path, 'a+')
+        # self.file = open(file_path, 'a+')
         self.file = open(file_path, 'w')
         self.write('STARTED')
         return self
