@@ -31,10 +31,10 @@ def print_torch(torch):
     return use_cuda, device, n_gpu
 
 
-def print_packages(print_path=False, *args):
+def print_packages(*args,**kwargs):
     for lib in args:
         print(f'{lib.__name__}: {lib.__version__}')
-        if print_path:
+        if kwargs['print_path']:
             print(lib.__file__)
 
 
