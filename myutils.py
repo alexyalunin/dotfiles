@@ -34,7 +34,7 @@ def print_torch(torch):
 def print_packages(*args,**kwargs):
     for lib in args:
         print(f'{lib.__name__}: {lib.__version__}')
-        if kwargs['print_path']:
+        if 'print_path' in kwargs and kwargs['print_path']:
             print(lib.__file__)
 
 
