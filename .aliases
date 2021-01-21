@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+alias commit_dotfiles="cd ~/dotfiles && git acpd && cd -"
+alias pull_dotfiles="cd ~/dotfiles && git pull && cd -"
+
 # clear output of jupyter notebook
 alias clear_notebook="jupyter nbconvert --clear-output --inplace"
 
