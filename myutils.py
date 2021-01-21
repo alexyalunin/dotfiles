@@ -8,6 +8,7 @@ from IPython.display import display
 import traceback
 import json
 import subprocess
+from datetime import datetime
 
 
 def overwrite_file(new_file, old_file):
@@ -30,10 +31,11 @@ def print_torch(torch):
     return use_cuda, device, n_gpu
 
 
-def print_packages(*args):
+def print_packages(print_path=False, *args):
     for lib in args:
         print(f'{lib.__name__}: {lib.__version__}')
-        print(lib.__file__)
+        if print_path:
+            print(lib.__file__)
 
 
 def seed_everything(seed, random, os, np, torch):
@@ -187,3 +189,8 @@ def save_to_excel(df, path, long_columns):
 
     writer.save()
     
+
+def curr_datetime():
+    now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    return now_datetime
+
