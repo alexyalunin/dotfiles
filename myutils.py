@@ -152,3 +152,38 @@ class MyErrorCatcher():
         self.file.close()
 
         
+def save_to_excel(df, path, long_columns):
+    long_columns = set(long_columns)
+    sheetname='Sheet1'
+    writer = pd.ExcelWriter(path, engine='xlsxwriter')
+    workbook=writer.book
+    format = workbook.add_format({'text_wrap': True})
+    format.set_align('top')
+    df.to_excel(writer, sheet_name=sheetname, index=False)  # send df to writer
+    worksheet = writer.sheets[sheetname]  # pull worksheet object
+    for idx, col in enumerate(df):  # loop through all columns
+        series = df[col]
+        max_len = max(
+            series.astype(str).map(len).max(),  # len of largest item
+            len(str(series.name))  # len of column name/header
+            ) + 1  # adding a little extra space
+        l = min(max_len, 20)
+        if series.name in long_columns:
+            l = min(max_len, 60)
+        worksheet.set_column(idx, idx, l)  # set column width
+    worksheet.set_column('A:AD', None, format)  # set column width
+
+    # Add a header format.
+    header_format = workbook.add_format({
+        'bold': True,
+        'text_wrap': True,
+        'valign': 'top',
+        'fg_color': '#D7E4BC',
+        'border': 1})
+
+    # Write the column headers with the defined format.
+    for col_num, value in enumerate(df.columns.values):
+        worksheet.write(0, col_num, value, header_format)
+
+    writer.save()
+    
