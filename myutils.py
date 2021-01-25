@@ -194,3 +194,13 @@ def curr_datetime():
     now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
     return now_datetime
 
+
+def read_excel(path):
+    for engine in ['xlrd', 'openpyxl', 'odf', 'pyxlsb']:
+        try:
+            df = pd.read_excel(path, engine=engine, encoding='utf-8')
+            print(f'{engine} is ok')
+            return df
+        except Exception as error:
+            print(f'{engine} returned error: {error}')
+            
