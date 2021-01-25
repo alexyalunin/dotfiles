@@ -198,7 +198,8 @@ def curr_datetime():
 def read_excel(path):
     for engine in ['xlrd', 'openpyxl', 'odf', 'pyxlsb']:
         try:
-            df = pd.read_excel(path, engine=engine, encoding='utf-8')
+            df = pd.read_excel(path, engine=engine, encoding='utf-8', usecols=lambda x: 'Unnamed' not in x)
+            df = df.dropna(how='all')
             print(f'{engine} is ok')
             return df
         except Exception as error:
