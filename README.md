@@ -2,7 +2,7 @@
 
 ```bash
 sudo apt install git
-git clone git@github.com:alexyaluninsber/dotfiles.git && cd dotfiles
+git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```
 
 ## Linux Setup 
@@ -14,10 +14,14 @@ git clone git@github.com:alexyaluninsber/dotfiles.git && cd dotfiles
 ## MacOS Setup 
 
 ```bash
-./2_zsh_install.sh && ./3_bootstrap.sh -f && ./.macos
+./2_zsh_install.sh 
+./3_bootstrap.sh -f 
+source ./.macos
 ```
 optionally install brew packages
 ```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+## add brew to path
 ./scripts/brew.sh
 ```
 
