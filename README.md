@@ -1,3 +1,10 @@
+<h1 align="center">
+  <img src="https://img.icons8.com/plasticine/400/000000/more.png" width="130"><br>
+  DOTFILES<br>
+  <sup><sub><sup><sub>OVERALL SETTINGS</sub></sup></sub></sup>
+</h1>
+
+
 # alexyalunin's dotfiles
 
 ```bash
