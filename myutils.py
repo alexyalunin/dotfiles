@@ -9,6 +9,24 @@ import traceback
 import json
 import subprocess
 from datetime import datetime
+import itertools
+import seaborn as sns
+
+
+def plot_countbar(a, print_proportions=True):
+    df = pd.DataFrame({'list_values': a})
+    ax = sns.countplot(x='list_values', data=df)
+    plt.show()
+    
+    if print_proportions:
+        C = collections.Counter(a)
+        total_sum = sum(C.values())
+        for k,v in C.most_common():
+            print(k, v, "{:.3f}".format(v/total_sum)) 
+            
+
+def concat_list_of_lists(a):
+    return list(itertools.chain.from_iterable(a))
 
 
 def overwrite_file(new_file, old_file):
@@ -74,7 +92,11 @@ def display_df(_df, exclude_cols, properties):
         }
     display(_df.style.set_properties(**properties))
     
-    
+
+def display_series(s):
+    print(s.to_string())
+
+
 def pickle_dump(obj, file_name):
     with open(file_name, 'wb') as file:
         pickle.dump(obj, file)
@@ -88,7 +110,6 @@ def pickle_load(file_name):
 
 
 def json_dump(obj, file_name):
-    assert isinstance(obj, dict), f"{obj} is not a dict"
     with open(file_name, 'w', encoding='utf-8') as file:
         json.dump(obj, file)
         print(f'Saved as json {os.path.realpath(file.name)}')
@@ -186,13 +207,11 @@ def save_to_excel(df, path, long_columns):
     # Write the column headers with the defined format.
     for col_num, value in enumerate(df.columns.values):
         worksheet.write(0, col_num, value, header_format)
-
-    writer.save()
+   
+    # Make header sticky
+    worksheet.freeze_panes(1, 0)
     
-
-def curr_datetime():
-    now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
-    return now_datetime
+    writer.save()
 
 
 def read_excel(path):
@@ -204,4 +223,9 @@ def read_excel(path):
             return df
         except Exception as error:
             print(f'{engine} returned error: {error}')
+
             
+def curr_datetime():
+    now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    return now_datetime
+
