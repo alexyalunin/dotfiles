@@ -7,7 +7,7 @@ alias pull_dotfiles="cd ~/dotfiles && git pull && cd -"
 alias clear_notebook="jupyter nbconvert --clear-output --inplace"
 
 # convert .ipynb to .py
-alias notebook_to_python="jupyter nbconvert --to script"
+alias convert_notebook_to_python="jupyter nbconvert --to script"
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
