@@ -13,16 +13,20 @@ import itertools
 import seaborn as sns
 
 
+def two_cols_to_dict(df, key_col, value_col):
+    return pd.Series(df[value_col].values,index=df[key_col]).to_dict()
+
 def plot_countbar(a, print_proportions=True):
-    df = pd.DataFrame({'list_values': a})
-    ax = sns.countplot(x='list_values', data=df)
+    df = pd.DataFrame({'values': a})
+    ax = sns.countplot(x='values', data=df)
     plt.show()
-    
+    res_df = []
     if print_proportions:
         C = collections.Counter(a)
         total_sum = sum(C.values())
-        for k,v in C.most_common():
-            print(k, v, "{:.3f}".format(v/total_sum)) 
+        for k,v in C.most_common(): 
+            res_df.append({'k':k, 'v':v, '%':round(v/total_sum, 3)*100})
+    display(pd.DataFrame(res_df))
             
 
 def concat_list_of_lists(a):
@@ -37,6 +41,14 @@ def overwrite_file(new_file, old_file):
     print('output:', output)
     print('error:', error)
     return output, error
+
+
+def import_file(file):
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("", file)
+    mylib = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mylib)
+    return mylib
 
 
 def print_torch(torch):
@@ -56,30 +68,36 @@ def print_packages(*args,**kwargs):
             print(lib.__file__)
 
 
-def seed_everything(seed, random, os, np, torch):
-    random.seed(seed)
-    os.environ['PYTHONHASHSEED'] = str(seed)
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    torch.cuda.manual_seed(seed)
-    torch.backends.cudnn.deterministic = True
+def seed_everything(seed, random=None, os=None, np=None, torch=None):
+    if random is not None:
+        random.seed(seed)
+    if os is not None:
+        os.environ['PYTHONHASHSEED'] = str(seed)
+    if np is not None:
+        np.random.seed(seed)
+    if torch is not None:
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed(seed)
+        torch.backends.cudnn.deterministic = True
 
     
 def pandas_display(func):
     default_1 = pd.options.display.max_rows
     default_2 = pd.options.display.max_colwidth
-    def wrapper(_df, exclude_cols=None, properties=None):
+    def wrapper(_df, exclude_cols=None, properties=None, limit_float=True):
         pd.options.display.max_rows = 1000
         pd.options.display.max_colwidth = None
-        func(_df, exclude_cols, properties)
+        func(_df, exclude_cols, properties, limit_float)
         pd.options.display.max_rows = default_1
         pd.options.display.max_colwidth = default_2
     return wrapper
 
 
 @pandas_display
-def display_df(_df, exclude_cols, properties):
-    if exclude_cols:
+def display_df(_df, exclude_cols, properties, limit_float):
+    if exclude_cols is not None:
+        if not isinstance(exclude_cols, list):
+            exclude_cols = list(exclude_cols)
         cols = np.setdiff1d(_df.columns.values, exclude_cols)
         _df = _df[cols]
     if not properties:
@@ -90,7 +108,10 @@ def display_df(_df, exclude_cols, properties):
             'width': '230px',
             'max-width': '230px'
         }
-    display(_df.style.set_properties(**properties))
+    a = _df.style.set_properties(**properties)
+    if limit_float:
+        a = a.format(lambda x: '{:,.3f}'.format(x))
+    display(a)
     
 
 def display_series(s):
@@ -126,7 +147,7 @@ def reload(library):
 
 
 def display_model_modules(model, sorted=True):
-    print(f'Total number of parameters: {model.num_parameters()}')
+#     print(f'Total number of parameters: {model.num_parameters()}')
     d = collections.Counter()
     for name, parameter in model.named_parameters():
         d[name] = parameter.numel()
@@ -152,7 +173,7 @@ class MyErrorCatcher():
     with myutils.MyErrorCatcher() as mec:
         for t in tqdm.tqdm(..., total=..., file=mec):
     """
-    def __enter__(self, file_path='./my_output.txt'):
+    def __enter__(self, file_path='./log.txt'):
         # self.file = open(file_path, 'a+')
         self.file = open(file_path, 'w')
         self.write('STARTED')
@@ -175,16 +196,19 @@ class MyErrorCatcher():
         self.file.close()
 
         
-def save_to_excel(df, path, long_columns):
+def save_to_excel(df, path, long_columns=[], n_rows_to_freeze=1, n_cols_to_freeze=0, dropdown_cols=None):
+    if path.split('.')[-1] != 'xlsx':
+        path += '.xlsx'
+    n_rows = len(df)
     long_columns = set(long_columns)
     sheetname='Sheet1'
     writer = pd.ExcelWriter(path, engine='xlsxwriter')
     workbook=writer.book
     format = workbook.add_format({'text_wrap': True})
     format.set_align('top')
-    df.to_excel(writer, sheet_name=sheetname, index=False)  # send df to writer
+    df.to_excel(writer, sheet_name=sheetname, index=True)  # send df to writer
     worksheet = writer.sheets[sheetname]  # pull worksheet object
-    for idx, col in enumerate(df):  # loop through all columns
+    for idx, col in enumerate(df, 1):  # loop through all columns
         series = df[col]
         max_len = max(
             series.astype(str).map(len).max(),  # len of largest item
@@ -193,10 +217,16 @@ def save_to_excel(df, path, long_columns):
         l = min(max_len, 20)
         if series.name in long_columns:
             l = min(max_len, 60)
-        worksheet.set_column(idx, idx, l)  # set column width
-    worksheet.set_column('A:AD', None, format)  # set column width
-
-    # Add a header format.
+        worksheet.set_column(idx, idx, l, format)
+        
+        if dropdown_cols is not None:
+            if col in dropdown_cols:
+                worksheet.data_validation(0, idx, n_rows, idx, {
+                    'validate': 'list',
+                    'source': dropdown_cols[col]
+                })
+        
+    # Add a header format. (bold text on green background)
     header_format = workbook.add_format({
         'bold': True,
         'text_wrap': True,
@@ -205,24 +235,26 @@ def save_to_excel(df, path, long_columns):
         'border': 1})
 
     # Write the column headers with the defined format.
-    for col_num, value in enumerate(df.columns.values):
+    for col_num, value in enumerate(df.columns.values, 1):
         worksheet.write(0, col_num, value, header_format)
    
-    # Make header sticky
-    worksheet.freeze_panes(1, 0)
+    # Make header sticky (https://xlsxwriter.readthedocs.io/worksheet.html)
+    worksheet.freeze_panes(n_rows_to_freeze, n_cols_to_freeze)
     
     writer.save()
 
 
 def read_excel(path):
-    for engine in ['xlrd', 'openpyxl', 'odf', 'pyxlsb']:
+    for engine in ['openpyxl', 'xlrd', 'odf', 'pyxlsb']:
         try:
             df = pd.read_excel(path, engine=engine, usecols=lambda x: 'Unnamed' not in x)
             df = df.dropna(how='all')
-            print(f'{engine} is ok')
+            # print(f'{engine} is ok')
             return df
         except Exception as error:
-            print(f'{engine} returned error: {error}')
+            pass
+            # print(f'{engine} returned error: {error}')
+    raise Exception('none of the engines worked')
 
             
 def curr_datetime():
