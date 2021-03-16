@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+
+alias clean_ram="sudo purge"
 alias filepath="readlink -f"
 alias empty_trash="rm -rf ~/.local/share/Trash/files/*"
 
@@ -6,7 +8,8 @@ alias commit_dotfiles="cd ~/dotfiles && git acpd && cd -"
 alias pull_dotfiles="cd ~/dotfiles && git pull && cd -"
 
 # clear output of jupyter notebook
-alias clear_notebook="jupyter nbconvert --clear-output --inplace"
+alias clear_notebook2="jupyter nbconvert --clear-output --inplace"
+alias clear_notebook="jupyter nbconvert --ClearOutputPreprocessor.enabled=True --inplace"
 
 # convert .ipynb to .py
 alias convert_notebook_to_python="jupyter nbconvert --to script"
