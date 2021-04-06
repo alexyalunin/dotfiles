@@ -1,6 +1,8 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
+
 import importlib 
 import collections
 import pickle, os, time, sys
@@ -10,24 +12,108 @@ import json
 import subprocess
 from datetime import datetime
 import itertools
-import seaborn as sns
 
 
-def two_cols_to_dict(df, key_col, value_col):
-    return pd.Series(df[value_col].values,index=df[key_col]).to_dict()
+# decorator
+def pandas_display(func):
+    default_1 = pd.options.display.max_rows
+    default_2 = pd.options.display.max_colwidth
+    def wrapper(_df, exclude_cols=None, properties=None, limit_float=True):
+        pd.options.display.max_rows = 1000
+        pd.options.display.max_colwidth = None
+        func(_df, exclude_cols, properties, limit_float)
+        pd.options.display.max_rows = default_1
+        pd.options.display.max_colwidth = default_2
+    return wrapper
+    
+    
+class pandas():
+    @staticmethod
+    def cols_to_dict(df, key_col, value_col):
+        """
+            key_col: str or List
+            value_col: str or List
+        """
+        return pd.Series(df[value_col].values, index=df[key_col]).to_dict()
+    
+    @staticmethod
+    def get_indices_where_value(s: pd.Series, v):
+        return s[s==v].index.values
+    
+    @staticmethod
+    def get_indices_where_na(s: pd.Series):
+        a = pd.isna(s)
+        return a[a].index.values
+    
+    @staticmethod
+    def display_series(s):
+        print(s.to_string())
+    
+    @staticmethod
+    @pandas_display
+    def display_df(_df, exclude_cols, properties, limit_float):
+        if exclude_cols is not None:
+            if not isinstance(exclude_cols, list):
+                exclude_cols = list(exclude_cols)
+            cols = [x for x in _df.columns.values if x not in set(exclude_cols)]
+            _df = _df[cols]
 
-def plot_countbar(a, print_proportions=True):
-    df = pd.DataFrame({'values': a})
-    ax = sns.countplot(x='values', data=df)
-    plt.show()
-    res_df = []
-    if print_proportions:
-        C = collections.Counter(a)
-        total_sum = sum(C.values())
-        for k,v in C.most_common(): 
-            res_df.append({'k':k, 'v':v, '%':round(v/total_sum, 3)*100})
-    display(pd.DataFrame(res_df))
-            
+        if not properties:
+            properties = {
+                'text-align': 'left',
+                'white-space': 'pre-wrap',
+                'word-wrap': 'break-word',
+                'width': '230px',
+                'max-width': '230px'
+            }
+        a = _df.style.set_properties(**properties)
+        if limit_float:
+            a.precision = 3
+        display(a)
+
+
+class viz():
+    @staticmethod
+    def corr_df(df):
+        plt.figure(figsize=(12,12))
+        corr = df.corr()
+        cols = [x[:20] for x in corr.columns]
+        sns.heatmap(corr, 
+                xticklabels=cols,
+                yticklabels=cols,
+                vmin=-1, vmax=1, cmap='coolwarm',
+                annot = True)
+    
+    @staticmethod
+    def plot_countbar(a, print_proportions=True):
+        plt.figure(figsize=(8,5))
+        sns.set_theme(style="darkgrid")
+
+        df = pd.DataFrame({'values': a})
+        unique_sorted = sorted(df['values'].unique())
+        ax = sns.countplot(x='values', data=df, order=unique_sorted)
+
+        # df stuff
+        res_df = []
+        if print_proportions:
+            C = collections.Counter(a)
+            total_sum = sum(C.values())
+            for k,v in C.most_common(): 
+                res_df.append({'k':k, 'v':v, '%':round(v/total_sum, 3)*100})
+        res_df = pd.DataFrame(res_df)
+        res_df = res_df.set_index('k')
+
+        for p, label in zip(ax.patches, res_df.loc[unique_sorted].iterrows()):
+            x=p.get_bbox().get_points()[:,0]
+            y=p.get_bbox().get_points()[1,1]
+
+    #         label = f'{int(label[1]["v"])}, {label[1]["%"]}%'
+            label = f'{int(label[1]["v"])}'
+            ax.annotate(label, (x.mean(), y), ha='center', va='bottom')
+        plt.show()
+    #     display(res_df)
+        display(res_df.sort_index())
+
 
 def concat_list_of_lists(a):
     return list(itertools.chain.from_iterable(a))
@@ -57,7 +143,7 @@ def print_torch(torch):
     n_gpu = torch.cuda.device_count()
     print("python:", sys.version)
     print("torch:", torch.__version__)
-    print(f'use_cuda: {use_cuda}, n_gpu: {n_gpu}, devices:{[torch.cuda.get_device_name(i) for i in range(n_gpu)]}')
+    print(f'use_cuda: {use_cuda}, n_gpu: {n_gpu}, device: {device}, devices:{[torch.cuda.get_device_name(i) for i in range(n_gpu)]}')
     return use_cuda, device, n_gpu
 
 
@@ -81,41 +167,7 @@ def seed_everything(seed, random=None, os=None, np=None, torch=None):
         torch.backends.cudnn.deterministic = True
 
     
-def pandas_display(func):
-    default_1 = pd.options.display.max_rows
-    default_2 = pd.options.display.max_colwidth
-    def wrapper(_df, exclude_cols=None, properties=None, limit_float=True):
-        pd.options.display.max_rows = 1000
-        pd.options.display.max_colwidth = None
-        func(_df, exclude_cols, properties, limit_float)
-        pd.options.display.max_rows = default_1
-        pd.options.display.max_colwidth = default_2
-    return wrapper
 
-
-@pandas_display
-def display_df(_df, exclude_cols, properties, limit_float):
-    if exclude_cols is not None:
-        if not isinstance(exclude_cols, list):
-            exclude_cols = list(exclude_cols)
-        cols = np.setdiff1d(_df.columns.values, exclude_cols)
-        _df = _df[cols]
-    if not properties:
-        properties = {
-            'text-align': 'left',
-            'white-space': 'pre-wrap',
-            'word-wrap': 'break-word',
-            'width': '230px',
-            'max-width': '230px'
-        }
-    a = _df.style.set_properties(**properties)
-    if limit_float:
-        a = a.format(lambda x: '{:,.3f}'.format(x))
-    display(a)
-    
-
-def display_series(s):
-    print(s.to_string())
 
 
 def pickle_dump(obj, file_name):
@@ -196,6 +248,25 @@ class MyErrorCatcher():
         self.file.close()
 
         
+class MyTimeCatcher():
+    """
+    with myutils.MyTimeCatcher() as _:
+        ...
+    """
+    def __enter__(self):
+        self.t = time.time()
+        return self
+
+    def __exit__(self, type, value, traceback):
+        self.t = time.time() - self.t
+        print('Elapsed time is %f seconds.' % self.t)
+        
+
+def curr_datetime():
+    now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
+    return now_datetime
+        
+        
 def save_to_excel(df, path, long_columns=[], n_rows_to_freeze=1, n_cols_to_freeze=0, dropdown_cols=None):
     if path.split('.')[-1] != 'xlsx':
         path += '.xlsx'
@@ -253,11 +324,8 @@ def read_excel(path):
             return df
         except Exception as error:
             pass
-            # print(f'{engine} returned error: {error}')
+            print(f'{engine} returned error: {error}')
     raise Exception('none of the engines worked')
 
             
-def curr_datetime():
-    now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
-    return now_datetime
 
