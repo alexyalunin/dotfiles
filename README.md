@@ -28,8 +28,6 @@ source ./.macos
 ```
 optionally install brew packages
 ```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-## add brew to path
 ./scripts/brew.sh
 ```
 
