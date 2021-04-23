@@ -19,6 +19,7 @@ git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```
 
 ## MacOS Setup 
+Read `mac_setup.md` first
 
 ```bash
 ./2_zsh_install.sh 
