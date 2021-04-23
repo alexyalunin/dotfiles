@@ -12,6 +12,7 @@ import json
 import subprocess
 from datetime import datetime
 import itertools
+import copy
 
 
 # decorator
@@ -143,6 +144,7 @@ def print_torch(torch):
     n_gpu = torch.cuda.device_count()
     print("python:", sys.version)
     print("torch:", torch.__version__)
+    print("CUDA_VISIBLE_DEVICES:", os.environ['CUDA_VISIBLE_DEVICES'])
     print(f'use_cuda: {use_cuda}, n_gpu: {n_gpu}, device: {device}, devices:{[torch.cuda.get_device_name(i) for i in range(n_gpu)]}')
     return use_cuda, device, n_gpu
 
@@ -265,67 +267,87 @@ class MyTimeCatcher():
 def curr_datetime():
     now_datetime = datetime.now().strftime("%d-%m-%Y_%H:%M:%S")
     return now_datetime
-        
-        
-def save_to_excel(df, path, long_columns=[], n_rows_to_freeze=1, n_cols_to_freeze=0, dropdown_cols=None):
-    if path.split('.')[-1] != 'xlsx':
-        path += '.xlsx'
-    n_rows = len(df)
-    long_columns = set(long_columns)
-    sheetname='Sheet1'
-    writer = pd.ExcelWriter(path, engine='xlsxwriter')
-    workbook=writer.book
-    format = workbook.add_format({'text_wrap': True})
-    format.set_align('top')
-    df.to_excel(writer, sheet_name=sheetname, index=True)  # send df to writer
-    worksheet = writer.sheets[sheetname]  # pull worksheet object
-    for idx, col in enumerate(df, 1):  # loop through all columns
-        series = df[col]
-        max_len = max(
-            series.astype(str).map(len).max(),  # len of largest item
-            len(str(series.name))  # len of column name/header
-            ) + 1  # adding a little extra space
-        l = min(max_len, 20)
-        if series.name in long_columns:
-            l = min(max_len, 60)
-        worksheet.set_column(idx, idx, l, format)
-        
-        if dropdown_cols is not None:
-            if col in dropdown_cols:
-                worksheet.data_validation(0, idx, n_rows, idx, {
-                    'validate': 'list',
-                    'source': dropdown_cols[col]
-                })
-        
-    # Add a header format. (bold text on green background)
-    header_format = workbook.add_format({
-        'bold': True,
-        'text_wrap': True,
-        'valign': 'top',
-        'fg_color': '#D7E4BC',
-        'border': 1})
+      
 
-    # Write the column headers with the defined format.
-    for col_num, value in enumerate(df.columns.values, 1):
-        worksheet.write(0, col_num, value, header_format)
-   
-    # Make header sticky (https://xlsxwriter.readthedocs.io/worksheet.html)
-    worksheet.freeze_panes(n_rows_to_freeze, n_cols_to_freeze)
-    
-    writer.save()
+class excel():
+    @staticmethod        
+    def save(df, path, long_columns=[], n_rows_to_freeze=1, n_cols_to_freeze=0, dropdown_cols=None, alternate_rows_step=None):
+        """
+            long_columns: List of colomn to be wider
+            n_rows_to_freeze: number of rows to be sticky in header
+            n_cols_to_freeze: number of columns
+            dropdown_cols: Dict[column_name: List[values]]
+            alternate_rows_step: step for rows to change color
+        """
+        if path.split('.')[-1] != 'xlsx':
+            path += '.xlsx'
+        n_rows = len(df)
+        long_columns = set(long_columns)
+        sheetname = 'Sheet1'
+        writer = pd.ExcelWriter(path, engine='xlsxwriter')
+        workbook = writer.book
+        format = workbook.add_format({'text_wrap': True})
+        format.set_align('top')
+        df.to_excel(writer, sheet_name=sheetname, index=True)  # send df to writer
+        worksheet = writer.sheets[sheetname]  # pull worksheet object
+        
+        if alternate_rows_step is not None:
+            row_color = workbook.add_format({'text_wrap': True, 'border':1})
+            row_color.set_align('top')
+            row_color.set_bg_color('#dce6f1')
+            for i in range(1, len(df), alternate_rows_step*2):
+                for j in range(i, i+alternate_rows_step):
+                    if j < len(df):
+                        worksheet.set_row(j, cell_format=row_color)
+                        
+        for idx, col in enumerate(df, 1):  # loop through all columns
+            series = df[col]
+            max_len = max(
+                series.astype(str).map(len).max(),  # len of largest item
+                len(str(series.name))  # len of column name/header
+                ) + 1  # adding a little extra space
+            l = min(max_len, 20)
+            if series.name in long_columns:
+                l = min(max_len, 60)
+            worksheet.set_column(idx, idx, l, format)
 
+            if dropdown_cols is not None:
+                if col in dropdown_cols:
+                    worksheet.data_validation(0, idx, n_rows, idx, {
+                        'validate': 'list',
+                        'source': dropdown_cols[col]
+                    })
 
-def read_excel(path):
-    for engine in ['openpyxl', 'xlrd', 'odf', 'pyxlsb']:
-        try:
-            df = pd.read_excel(path, engine=engine, usecols=lambda x: 'Unnamed' not in x)
-            df = df.dropna(how='all')
-            # print(f'{engine} is ok')
-            return df
-        except Exception as error:
-            pass
-            print(f'{engine} returned error: {error}')
-    raise Exception('none of the engines worked')
+        # Add a header format. (bold text on green background)
+        header_format = workbook.add_format({
+            'bold': True,
+            'text_wrap': True,
+            'valign': 'top',
+            'fg_color': '#D7E4BC',
+            'border': 1})
+
+        # Write the column headers with the defined format.
+        for col_num, value in enumerate(df.columns.values, 1):
+            worksheet.write(0, col_num, value, header_format)
+
+        # Make header sticky (https://xlsxwriter.readthedocs.io/worksheet.html)
+        worksheet.freeze_panes(n_rows_to_freeze, n_cols_to_freeze)
+
+        writer.save()
+
+        
+    @staticmethod
+    def read(path):
+        for engine in ['openpyxl', 'xlrd', 'odf', 'pyxlsb']:
+            try:
+                df = pd.read_excel(path, engine=engine, usecols=lambda x: 'Unnamed' not in x)
+                df = df.dropna(how='all')
+                # print(f'{engine} is ok')
+                return df
+            except Exception as error:
+                pass
+                print(f'{engine} returned error: {error}')
+        raise Exception('none of the engines worked')
 
             
 
