@@ -19,6 +19,14 @@ function mkd() {
 	mkdir -p "$@" && cd "$_";
 }
 
+function findfolder() {
+    find . -name "$@" -type d 2>/dev/null
+}
+
+function findfile() {
+    mdfind -name "$@"
+}
+
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar";

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+alias findline="sudo rg"
 alias clean_ram="sudo purge"
 alias filepath="readlink -f"
 alias empty_trash="rm -rf ~/.local/share/Trash/files/*"
@@ -59,7 +59,7 @@ alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias canary='/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com | xargs -I{} curl ipinfo.io/{}"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
