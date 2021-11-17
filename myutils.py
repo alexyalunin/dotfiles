@@ -10,7 +10,7 @@ from IPython.display import display
 import traceback
 import json
 import subprocess
-from datetime import datetime
+from datetime import datetime, timedelta
 import itertools
 import copy
 
@@ -167,9 +167,6 @@ def seed_everything(seed, random=None, os=None, np=None, torch=None):
         torch.cuda.manual_seed(seed)
         torch.backends.cudnn.deterministic = True
 
-    
-
-
 
 def pickle_save(obj, file_name):
     with open(file_name, 'wb') as file:
@@ -249,9 +246,9 @@ class MyErrorCatcher():
         self.file.close()
 
         
-class MyTimeCatcher():
+class MeasureTime():
     """
-    with myutils.MyTimeCatcher() as _:
+    with myutils.MeasureTime() as _:
         ...
     """
     def __enter__(self):
@@ -259,8 +256,7 @@ class MyTimeCatcher():
         return self
 
     def __exit__(self, type, value, traceback):
-        self.t = time.time() - self.t
-        print('Elapsed time is %f seconds.' % self.t)      
+        print(f'Elapsed time: {str(timedelta(seconds=(time.time() - self.t))).split(".")[0]}') 
 
         
 def excel_save(df, path, long_columns=[], n_rows_to_freeze=1, n_cols_to_freeze=0, dropdown_cols=None, alternate_rows_step=None):
@@ -348,3 +344,41 @@ def curr_datetime():
 
 def reverse_dict(D):
     return {v: k for k, v in D.items()}
+
+
+
+def check_tensor_to_numpy(x):
+    try:
+        import torch
+        if isinstance(x, np.ndarray):
+            return x
+        elif isinstance(x, torch.Tensor):
+            x = x.detach().cpu().numpy()
+            return x
+        else:
+            print("converting x of type:", type(x), "to numpy array")
+            return np.array(x)
+    except:
+        return x
+
+    
+def plot_3d(p, threshold=0.01, ax=None):
+    from skimage import measure, morphology
+    from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+    p = check_tensor_to_numpy(p)
+    verts, faces, _, _ = measure.marching_cubes(p)
+
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection='3d')
+
+    # Fancy indexing: `verts[faces]` to generate a collection of triangles
+    mesh = Poly3DCollection(verts[faces], alpha=0.70)
+    face_color = [0.45, 0.45, 0.75]
+    mesh.set_facecolor(face_color)
+    ax.add_collection3d(mesh)
+
+    ax.set_xlim(0, p.shape[0])
+    ax.set_ylim(0, p.shape[1])
+    ax.set_zlim(0, p.shape[2])
+
+    plt.show()

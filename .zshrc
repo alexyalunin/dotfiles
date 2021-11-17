@@ -1,7 +1,8 @@
 DISABLE_AUTO_UPDATE="true"
+
 export PATH="/usr/local/opt/python@3.7/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/python@3.7/lib"
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 ZSH=$HOME/.oh-my-zsh

@@ -27,6 +27,10 @@ function findfile() {
     mdfind -name "$@"
 }
 
+function findlinux() {
+    find . -name "$@"
+}
+
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
 	local tmpFile="${@%/}.tar";

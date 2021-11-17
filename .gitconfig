@@ -4,8 +4,8 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [user]
-	name = alexyalunin
-	email = ale.yalunin@gmail.com
+	name = alexyaluninsber
+	email = aayalunin@sberbank.ru
 [alias]
 	s = status
 	st = status
