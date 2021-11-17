@@ -11,6 +11,10 @@ function findlineinpdf () {
 	find . -name '*.pdf' -exec sh -c "pdftotext '{}' - | grep --with-filename --label='{}' --color '${@}'" \;
 }
 
+function backup () {
+	mkdir -p ~/backups
+	cp -r "$@" ~/backups
+}
 
 # =============================================================================
 
