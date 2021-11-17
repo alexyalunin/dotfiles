@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias findline="sudo rg"
 alias clean_ram="sudo purge"
 alias filepath="readlink -f"
