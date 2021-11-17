@@ -1,19 +1,19 @@
 [filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
 [user]
-	name = alexyaluninsber
-	email = aayalunin@sberbank.ru
+    name = Alexander Yalunin
 [alias]
-	s = status
-	st = status
-	unstash = checkout stash@{0} -- 
-	ac = !git add -A && git commit -m 'commit'
-	acpd = !git add -A && git commit -m 'commit' && git remote | git push 
-	acp = "!f() {git add -A && git commit -m "${1}" && git remote | git push; }; f"
-	example = "!f() { echo "value passed as parameter: ${1}"; }; f"
-	pushall = !git remote | xargs -L1 git push --all
-	graph = log --all --graph --decorate --oneline
-	undo = reset --soft HEAD~1
+    s = status
+    unstash = checkout stash@{0} -- 
+    ac = !git add -A && git commit -m 'commit'
+    acpd = !git add -A && git commit -m 'commit' && git remote | git push 
+    acp = "!f() {git add -A && git commit -m "${1}" && git remote | git push; }; f"
+    example = "!f() { echo "value passed as parameter: ${1}"; }; f"
+    pushall = !git remote | xargs -L1 git push --all
+    graph = log --all --graph --decorate --oneline
+    undo = reset --soft HEAD~1
+[core]
+    compression = 9
