@@ -5,6 +5,7 @@
     process = git-lfs filter-process
 [user]
     name = Alexander Yalunin
+    email = ale.yalunin@gmail.com
 [alias]
     s = status
     unstash = checkout stash@{0} -- 
