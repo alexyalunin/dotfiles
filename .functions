@@ -16,6 +16,14 @@ function backup () {
 	cp -r "$@" ~/backups
 }
 
+function untar () {
+	tar xf "$@"
+}
+
+function tar_folder () {
+	tar -cvf "$@".tar "$@"
+}
+
 # =============================================================================
 
 # Create a new directory and enter it
