@@ -25,10 +25,12 @@ switch to iterm2, update settings:
 brew install git
 ```
 
-5. configure ssh and gitconfig
+5. install dotfiles from https://github.com/alexyalunin/dotfiles (use https://macos-defaults.com/ for custom settings)
+
+6. configure ssh and gitconfig
 https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 
-6. Install apps
+7. Install apps
 ```
 brew install tmux vlc skype zoom spectacle nordvpn ccleaner google-chrome visual-studio-code
 ```
@@ -37,9 +39,12 @@ App Store:
 Internet:
 - punto switcher 
 
-7. install dotfiles from https://github.com/alexyalunin/dotfiles (use https://macos-defaults.com/ for custom settings)
 
 -------------
 Mac additional setting
-- battery percentage
+- wallpaper
+- display larger text
+- battery percentage (dock and meny bar -> battery)
 - turn off swipe back in trackpad - more gestures - swipe between pages
+- sound - turn off play user interface sound effects
+- battery - turn off display after 1 hour
