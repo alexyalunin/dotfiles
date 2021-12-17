@@ -13,7 +13,7 @@ plugins=(
   git
   bundler
   dotenv
-  osx
+  macos
   rake
   zsh-autosuggestions
   zsh-syntax-highlighting
