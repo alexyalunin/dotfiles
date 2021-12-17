@@ -925,6 +925,14 @@ sudo nvram StartupMute=%01
 defaults write com.apple.dock orientation -string left
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+defaults write com.apple.AppleMultitouchTrackpad ActuationStrength -int 0
+defaults write com.apple.AppleMultitouchTrackpad FirstClickThreshold -int 0
+defaults write com.apple.AppleMultitouchTrackpad SecondClickThreshold -int 0
+defaults write -g com.apple.trackpad.scaling -int 1
+
+defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -bool false
+defaults write "Apple Global Domain" AppleEnableSwipeNavigateWithScrolls -bool false
+
 
 ###############################################################################
 # Kill affected applications                                                  #
