@@ -25,7 +25,7 @@ switch to iterm2, update settings:
 brew install git
 ```
 
-5. install dotfiles from https://github.com/alexyalunin/dotfiles (use https://macos-defaults.com/ for custom settings)
+5. install dotfiles from https://github.com/alexyalunin/dotfiles (use https://macos-defaults.com/ for custom settings, https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/)
 
 6. configure ssh and gitconfig
 https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
