@@ -45,6 +45,5 @@ Mac additional setting
 - wallpaper
 - display larger text
 - battery percentage (dock and meny bar -> battery)
-- turn off swipe back in trackpad - more gestures - swipe between pages
-- sound - turn off play user interface sound effects
 - battery - turn off display after 1 hour
+- remove unused items from menu bar with dragging to desktop
