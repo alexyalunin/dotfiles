@@ -32,18 +32,19 @@ https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 
 7. Install apps
 ```
-brew install tmux vlc skype zoom spectacle nordvpn ccleaner google-chrome visual-studio-code
+brew install vlc zoom spectacle nordvpn ccleaner google-chrome visual-studio-code telegram folx cleanmymac 1password 
+brew install tmux htop rg broot
 ```
 App Store:
 
 Internet:
 - punto switcher 
 
-
 -------------
 Mac additional setting
-- wallpaper
+- wallpaper, avatar, screen saver animation
 - display larger text
-- battery percentage (dock and meny bar -> battery)
+- battery percentage (dock and menu bar -> battery)
 - battery - turn off display after 1 hour
 - remove unused items from menu bar with dragging to desktop
+- notes view show folders

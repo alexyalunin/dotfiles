@@ -933,6 +933,14 @@ defaults write -g com.apple.trackpad.scaling -int 1
 defaults write com.apple.systemsound com.apple.sound.uiaudio.enabled -bool false
 defaults write "Apple Global Domain" AppleEnableSwipeNavigateWithScrolls -bool false
 
+defaults write com.apple.dock expose-animation-duration -int 0
+defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" -bool true
+
+# Use scroll gesture with the Ctrl (^) modifier key to zoom
+defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
+
 
 ###############################################################################
 # Kill affected applications                                                  #

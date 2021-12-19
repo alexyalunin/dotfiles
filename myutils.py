@@ -15,6 +15,25 @@ import itertools
 import copy
 
 
+def remove_outliers(an_array: np.ndarray, max_deviations=3):
+    mean = np.mean(an_array)
+    standard_deviation = np.std(an_array)
+    distance_from_mean = abs(an_array - mean)
+    not_outlier = distance_from_mean < max_deviations * standard_deviation
+    no_outliers = an_array[not_outlier]
+    return no_outliers
+
+
+def text_stats(s: pd.Series, remove_out=True):
+    lens = s.apply(lambda x: len(x.split(' '))).values
+    if remove_out:
+        lens = remove_outliers(lens)
+    lens = pd.Series(lens)
+
+    print('Mean len: ', lens.mean())
+    _ = lens.hist(bins=50)
+
+
 # decorator
 def pandas_display(func):
     default_1 = pd.options.display.max_rows
