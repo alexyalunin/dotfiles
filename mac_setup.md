@@ -19,6 +19,7 @@ switch to iterm2, update settings:
 - split 3 window
 - bar -> window -> save window arrangment 
 - pref -> general -> startup -> open def window array
+- profile -> terminal -> silence bell
 
 4.  Install Git: 
 ```
@@ -33,7 +34,7 @@ https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 7. Install apps
 ```
 brew install vlc zoom spectacle nordvpn ccleaner google-chrome visual-studio-code telegram folx cleanmymac 1password 
-brew install tmux htop rg broot
+brew install tmux htop rg broot tldr wget
 ```
 App Store:
 
@@ -48,3 +49,5 @@ Mac additional setting
 - battery - turn off display after 1 hour
 - remove unused items from menu bar with dragging to desktop
 - notes view show folders
+- cd Downloads && ln -s . ~/Desktop/Downloads
+- true tone, night shift -> sunset to sunrise

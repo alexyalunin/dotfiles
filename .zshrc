@@ -44,3 +44,4 @@ fd --type d . "$1"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ================================
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
