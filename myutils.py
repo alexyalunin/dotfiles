@@ -1,3 +1,9 @@
+""" Use with:
+import sys, os 
+sys.path.append(os.path.expanduser("~")+"/dotfiles")
+import myutils
+"""
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np

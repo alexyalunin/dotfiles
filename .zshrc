@@ -1,8 +1,5 @@
 DISABLE_AUTO_UPDATE="true"
 
-export PATH="/usr/local/opt/python@3.7/bin:$PATH"
-export LDFLAGS="-L/usr/local/opt/python@3.7/lib"
-export PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export EDITOR='vim'
 export VISUAL='vim'
@@ -18,6 +15,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   web-search
+  autojump
 )
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
@@ -44,4 +42,3 @@ fd --type d . "$1"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ================================
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
