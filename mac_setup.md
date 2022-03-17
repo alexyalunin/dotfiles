@@ -33,7 +33,7 @@ https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 
 7. Install apps
 ```
-brew install firefox zoom spectacle nordvpn ccleaner google-chrome visual-studio-code telegram folx cleanmymac bitwarden vlc utm
+brew install --cask firefox zoom spectacle nordvpn google-chrome visual-studio-code telegram transmission bitwarden vlc utm
 brew install tmux htop rg broot tldr wget graphviz boost hdf5 swig autojump cmake ncdu node llvm 
 ```
 App Store:
