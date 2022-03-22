@@ -49,6 +49,7 @@ Mac additional setting
 - battery - turn off display after 1 hour
 - remove unused items from menu bar with dragging to desktop
 - notes view show folders
-- cd Downloads && ln -s . ~/Desktop/Downloads
+- ln -s ~/Downloads ~/Desktop/Downloads
 - true tone, night shift -> sunset to sunrise
 - vscode -> file -> auto save
+- vlc -> pref -> hotkeys -> faster fine ]
