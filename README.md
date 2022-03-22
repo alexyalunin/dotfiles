@@ -33,6 +33,4 @@ optionally install brew packages
 ```
 
 ## todo
-- [ ] git acp
-- [ ] jupyter lab config
-- [ ] Identity added: /Users/Alexander/.ssh/id_git_alexyalunin
+
