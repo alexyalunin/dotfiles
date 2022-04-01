@@ -33,13 +33,9 @@ https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 
 7. Install apps
 ```
-brew install --cask firefox zoom spectacle nordvpn google-chrome visual-studio-code telegram transmission bitwarden vlc utm
-brew install tmux htop rg broot tldr wget graphviz boost hdf5 swig autojump cmake ncdu node llvm 
+brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget
+brew install --cask firefox google-chrome zoom nordvpn visual-studio-code telegram spectacle transmission bitwarden vlc utm joplin cryptomator eul
 ```
-App Store:
-
-Internet:
-- punto switcher 
 
 -------------
 Mac additional setting
@@ -49,7 +45,8 @@ Mac additional setting
 - battery - turn off display after 1 hour
 - remove unused items from menu bar with dragging to desktop
 - notes view show folders
-- ln -s ~/Downloads ~/Desktop/Downloads
+- ln -s ~/ ~/Desktop/alexyalunin
 - true tone, night shift -> sunset to sunrise
 - vscode -> file -> auto save
 - vlc -> pref -> hotkeys -> faster fine ]
+- [app-cleaner](https://github.com/sunknudsen/privacy-guides/blob/master/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative/README.md)
