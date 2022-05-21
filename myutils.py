@@ -407,3 +407,27 @@ def plot_3d(p, threshold=0.01, ax=None):
     ax.set_zlim(0, p.shape[2])
 
     plt.show()
+
+
+def opt_threshold_f1(y_true, y_pred):
+    p, r, ts = precision_recall_curve(y_true, y_pred)
+    t = ts[np.argmax(2*p*r/(p+r+1e-8))]
+    return t
+
+
+def opt_threshold_acc(y_true, y_pred):
+    A = list(zip(y_true, y_pred))
+    A = sorted(A, key=lambda x: x[1])
+    total = len(A)
+    tp = len([1 for x in A if x[0]==1])
+    tn = 0
+    th_acc = []
+    for x in A:
+        th = x[1]
+        if x[0] == 1:
+            tp -= 1
+        else:
+            tn += 1
+        acc = (tp + tn) / total
+        th_acc.append((th, acc))
+    return max(th_acc, key=lambda x: x[1])[0]
