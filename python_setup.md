@@ -25,17 +25,17 @@ pip install --upgrade pip
 3. Install kernel
 ```
 source venv3.8/bin/activate
-ipython kernel install --user --name=venv3.6
+ipython kernel install --user --name=venv3.8
 ```
-- check kernel with jupyter kernelspec list
-- vim /Users/alexyalunin/Library/Jupyter/kernels/venv3.9/kernel.json
-- /Users/alexyalunin/venv3.9/bin/python3.9
+- check kernel with `jupyter kernelspec list`
+- `vim /home/alexyalunin/.local/share/jupyter/kernels/venv3.8/kernel.json`
+- put in argv `/home/alexyalunin/venv3.8/bin/python3.8`
 
 
 4. Install basics
 ```
 pip install --upgrade pip
-pip install wheel ipykernel numpy pandas matplotlib seaborn scipy sklearn tqdm ipywidgets
+pip install wheel ipykernel numpy pandas matplotlib seaborn scipy sklearn tqdm ipywidgets xlsxwriter
 ```
 
 
@@ -44,6 +44,7 @@ pip install wheel ipykernel numpy pandas matplotlib seaborn scipy sklearn tqdm i
 jupyter nbextension enable --py widgetsnbextension
 brew install node
 jupyter labextension install @jupyter-widgets/jupyterlab-manager
+jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyterlab-plotly
 ```
 
 6. Install Jupyter Lab

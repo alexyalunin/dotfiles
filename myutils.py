@@ -17,7 +17,6 @@ import traceback
 import json
 import subprocess
 from datetime import datetime, timedelta
-import itertools
 import copy
 
 
@@ -141,7 +140,8 @@ class viz():
 
 
 def concat_list_of_lists(a):
-    return list(itertools.chain.from_iterable(a))
+    # return list(itertools.chain.from_iterable(a))
+    return [j for i in a for j in i]
 
 
 def overwrite_file(new_file, old_file):

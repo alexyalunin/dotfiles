@@ -17,7 +17,7 @@ git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```bash
 ./1_apt_install.sh && ./2_zsh_install.sh && ./3_bootstrap.sh -f
 ```
-Reload Linux for zsh
+Reload Linux for zsh, install python `mac_setup.md`, update `.extra`
 
 ## MacOS Setup 
 Read `mac_setup.md` first

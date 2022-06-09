@@ -15,7 +15,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   web-search
-  autojump
 )
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
