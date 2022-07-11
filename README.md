@@ -8,8 +8,7 @@
 # alexyalunin's dotfiles
 
 ```bash
-sudo apt install git
-git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
+sudo apt install -y git && git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```
 
 ## Linux Setup 
@@ -26,11 +25,3 @@ Read `mac_setup.md` first
 ./2_zsh_install.sh 
 ./3_bootstrap.sh -f 
 source ./.macos
-```
-optionally install brew packages
-```
-./scripts/brew.sh
-```
-
-## todo
-

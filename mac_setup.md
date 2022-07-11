@@ -34,7 +34,7 @@ https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 7. Install apps
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget
-brew install --cask firefox google-chrome zoom nordvpn visual-studio-code telegram spectacle transmission bitwarden vlc utm joplin cryptomator eul
+brew install --cask firefox google-chrome zoom nordvpn visual-studio-code telegram spectacle transmission  bitwarden vlc utm joplin cryptomator eul docker
 ```
 
 -------------

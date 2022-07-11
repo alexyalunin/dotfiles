@@ -14,7 +14,7 @@ function install {
 }
 
 # Basics
-for package in curl file git htop tmux vim zsh tldr xclip ncdu
+for package in curl file git htop tmux vim zsh tldr xclip ncdu python3-pip
 do
  install ${package}
 done

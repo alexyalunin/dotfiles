@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-alias brewupdate="brew list --cask | xargs brew upgrade"
+alias brewupdate="brew upgrade && brew list --cask | xargs brew upgrade"
 alias speedtest="curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -"
 alias findline="sudo rg"
 alias ramfree="sudo purge"

@@ -17,6 +17,7 @@ import traceback
 import json
 import subprocess
 from datetime import datetime, timedelta
+import itertools
 import copy
 
 
@@ -43,7 +44,7 @@ def text_stats(s: pd.Series, remove_out=True):
 def pandas_display(func):
     default_1 = pd.options.display.max_rows
     default_2 = pd.options.display.max_colwidth
-    def wrapper(_df, exclude_cols=None, properties=None, limit_float=True):
+    def wrapper(_df, exclude_cols=None, properties=None, limit_float=2):
         pd.options.display.max_rows = 1000
         pd.options.display.max_colwidth = None
         func(_df, exclude_cols, properties, limit_float)
@@ -52,6 +53,29 @@ def pandas_display(func):
     return wrapper
     
     
+@pandas_display
+def display_df(self, exclude_cols, properties, limit_float):
+    if exclude_cols is not None:
+        if not isinstance(exclude_cols, list):
+            exclude_cols = list(exclude_cols)
+        cols = [x for x in self.columns.values if x not in set(exclude_cols)]
+        self = self[cols]
+
+    if not properties:
+        properties = {
+            'text-align': 'left',
+            'white-space': 'pre-wrap',
+            'word-wrap': 'break-word',
+            'width': '230px',
+            'max-width': '230px',
+        }
+        
+    a = self.style.set_properties(**properties)
+    if limit_float is not None:
+        a.format(thousands=',', precision=limit_float)
+    display(a)
+
+
 class pandas():
     @staticmethod
     def cols_to_dict(df, key_col, value_col):
@@ -71,31 +95,16 @@ class pandas():
         return a[a].index.values
     
 
-def display_series(s):
-    print(s.to_string())
+def display_series(self):
+    print(self.to_string())
     
-@pandas_display
-def display_df(_df, exclude_cols, properties, limit_float):
-    if exclude_cols is not None:
-        if not isinstance(exclude_cols, list):
-            exclude_cols = list(exclude_cols)
-        cols = [x for x in _df.columns.values if x not in set(exclude_cols)]
-        _df = _df[cols]
-
-    if not properties:
-        properties = {
-            'text-align': 'left',
-            'white-space': 'pre-wrap',
-            'word-wrap': 'break-word',
-            'width': '230px',
-            'max-width': '230px'
-        }
-    a = _df.style.set_properties(**properties)
-    if limit_float:
-        a.precision = 3
-    display(a)
-
-
+    
+d = display_df
+pd.DataFrame.d = d
+pd.Series.d = display_series
+    
+    
+    
 class viz():
     @staticmethod
     def corr_df(df):
@@ -140,8 +149,7 @@ class viz():
 
 
 def concat_list_of_lists(a):
-    # return list(itertools.chain.from_iterable(a))
-    return [j for i in a for j in i]
+    return list(itertools.chain.from_iterable(a))
 
 
 def overwrite_file(new_file, old_file):
