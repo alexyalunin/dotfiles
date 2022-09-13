@@ -50,7 +50,8 @@ Mac additional setting
 - display -> resolution -> scaled -> larger text
 - battery percentage (dock and menu bar -> battery)
 - battery -> turn off display after 15 mins
-- remove unused items from menu bar with dragging to desktop
+- remove items from menu bar with dragging to desktop (hold cmd)
+- remove items from dock (drop to launchpad)
 - notes view show folders
 - ln -s ~/ ~/Desktop/alexyalunin
 - true tone, night shift -> sunset to sunrise
@@ -58,4 +59,5 @@ Mac additional setting
 - vlc -> pref -> hotkeys -> faster fine ]
 - set firefox as default browser in firefox settings
 - add touch id
+- install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9 
 - [app-cleaner](https://github.com/sunknudsen/privacy-guides/blob/master/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative/README.md)
