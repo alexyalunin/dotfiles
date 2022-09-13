@@ -42,7 +42,7 @@ brew install --cask transmission bitwarden cryptomator
 -------------
 Mac additional setting
 - wallpaper, avatar, screen saver animation
-- display larger text
+- display (resolution scaled) larger text
 - battery percentage (dock and menu bar -> battery)
 - battery - turn off display after 1 hour
 - remove unused items from menu bar with dragging to desktop
