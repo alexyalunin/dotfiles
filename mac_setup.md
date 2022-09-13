@@ -37,7 +37,7 @@ create .extra and put `ssh-add ~/.ssh/id_rsa`
 
 add key to github with `cat ~/.ssh/id_rsa_joom.pub`, then you can clone with `git clone git@...`
 
-7. Install apps
+7. Install apps, but first put all apple apps into one folder
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget
 brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox
