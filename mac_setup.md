@@ -26,7 +26,8 @@ switch to iterm2, update settings:
 brew install git
 ```
 
-5. install dotfiles from https://github.com/alexyalunin/dotfiles (use https://macos-defaults.com/ for custom settings, https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/)
+5. follow instructions on https://github.com/alexyalunin/dotfiles 
+(use https://macos-defaults.com/ for custom settings, https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/)
 
 6. configure ssh and gitconfig
 https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
@@ -34,7 +35,8 @@ https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
 7. Install apps
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget
-brew install --cask firefox google-chrome zoom nordvpn visual-studio-code telegram spectacle transmission  bitwarden vlc utm joplin cryptomator eul docker
+brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc utm eul docker
+brew install --cask transmission bitwarden cryptomator
 ```
 
 -------------
