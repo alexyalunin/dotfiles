@@ -30,25 +30,32 @@ brew install git
 (use https://macos-defaults.com/ for custom settings, https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/)
 
 6. configure ssh and gitconfig
-https://github.com/bramus/freshinstall/blob/master/steps/2.ssh.sh
+```
+ssh-keygen -t rsa
+```
+create .extra and put `ssh-add ~/.ssh/id_rsa`
+
+add key to github with `cat ~/.ssh/id_rsa_joom.pub`, then you can clone with `git clone git@...`
 
 7. Install apps
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget
-brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc utm eul docker
-brew install --cask transmission bitwarden cryptomator
+brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox
+brew install --cask transmission bitwarden cryptomator utm
 ```
 
 -------------
 Mac additional setting
-- wallpaper, avatar, screen saver animation
-- display (resolution scaled) larger text
+- wallpaper, avatar, screen saver animation (drift)
+- display -> resolution -> scaled -> larger text
 - battery percentage (dock and menu bar -> battery)
-- battery - turn off display after 1 hour
+- battery -> turn off display after 15 mins
 - remove unused items from menu bar with dragging to desktop
 - notes view show folders
 - ln -s ~/ ~/Desktop/alexyalunin
 - true tone, night shift -> sunset to sunrise
 - vscode -> file -> auto save
 - vlc -> pref -> hotkeys -> faster fine ]
+- set firefox as default browser in firefox settings
+- add touch id
 - [app-cleaner](https://github.com/sunknudsen/privacy-guides/blob/master/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative/README.md)
