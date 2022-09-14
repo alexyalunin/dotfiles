@@ -35,7 +35,7 @@ ssh-keygen -t rsa
 ```
 create .extra and put `ssh-add ~/.ssh/id_rsa`
 
-add key to github with `cat ~/.ssh/id_rsa_joom.pub`, then you can clone with `git clone git@...`
+add key to github with `cat ~/.ssh/id_rsa.pub`, then you can clone with `git clone git@...`
 
 7. Install apps, but first put all apple apps into one folder
 ```
@@ -52,12 +52,14 @@ Mac additional setting
 - battery -> turn off display after 15 mins
 - remove items from menu bar with dragging to desktop (hold cmd)
 - remove items from dock (drop to launchpad)
-- notes view show folders
+- notes -> view -> show folders, edit -> substitutions -> smart links
 - ln -s ~/ ~/Desktop/alexyalunin
 - true tone, night shift -> sunset to sunrise
 - vscode -> file -> auto save
 - vlc -> pref -> hotkeys -> faster fine ]
 - set firefox as default browser in firefox settings
 - add touch id
+- sound -> Uncheck the “Play user interface sound effects”
 - install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9 
+- firefox settings: default zoom firefox 90, pluggins (ublock, simple translate, cookies), https://www.google.com/preferences?hl=en check "Open each selected result in a new browser window"
 - [app-cleaner](https://github.com/sunknudsen/privacy-guides/blob/master/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative/README.md)
