@@ -16,7 +16,7 @@ brew doctor
 brew install iterm2
 ```
 switch to iterm2, update settings:
-- split 3 window
+- split 4 window
 - bar -> window -> save window arrangment 
 - pref -> general -> startup -> open def window array
 - profile -> terminal -> silence bell
@@ -33,33 +33,36 @@ brew install git
 ```
 ssh-keygen -t rsa
 ```
-create .extra and put `ssh-add ~/.ssh/id_rsa`
+create .extra and add line `ssh-add ~/.ssh/id_rsa`
 
 add key to github with `cat ~/.ssh/id_rsa.pub`, then you can clone with `git clone git@...`
 
 7. Install apps, but first put all apple apps into one folder
 ```
-brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget
+brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget fzf
 brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox
 brew install --cask transmission bitwarden cryptomator utm
 ```
 
 -------------
 Mac additional setting
-- wallpaper, avatar, screen saver animation (drift)
-- display -> resolution -> scaled -> larger text
-- battery percentage (dock and menu bar -> battery)
+- desktop -> wallpaper, screen saver animation (drift)
+- users & groups -> avatar
+- display -> resolution -> scaled -> larger text, check true tone, night shift -> sunset to sunrise
+- dock and menu bar -> battery -> percentage
 - battery -> turn off display after 15 mins
+- touch id
+- bluetooth -> show bluetooth in menu bar
+- sound -> Uncheck the “Play user interface sound effects”
+- keyboard -> shortcuts -> input sources -> cmd space (fix spotlight)
+
+- notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created
+- install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9 
+- firefox: default zoom firefox 90, pluggins (ublock, simple translate, cookies), https://www.google.com/preferences?hl=en check "Open each selected result in a new browser window", set firefox as default browser
+- telegram: sounds -> sent message off, data and storage -> storage usage -> 5gb, preferences -> general -> show icon in menu bar off
+- vscode: file -> auto save
+- vlc: pref -> hotkeys -> faster fine ]
+
 - remove items from menu bar with dragging to desktop (hold cmd)
 - remove items from dock (drop to launchpad)
-- notes -> view -> show folders, edit -> substitutions -> smart links
-- ln -s ~/ ~/Desktop/alexyalunin
-- true tone, night shift -> sunset to sunrise
-- vscode -> file -> auto save
-- vlc -> pref -> hotkeys -> faster fine ]
-- set firefox as default browser in firefox settings
-- add touch id
-- sound -> Uncheck the “Play user interface sound effects”
-- install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9 
-- firefox settings: default zoom firefox 90, pluggins (ublock, simple translate, cookies), https://www.google.com/preferences?hl=en check "Open each selected result in a new browser window"
 - [app-cleaner](https://github.com/sunknudsen/privacy-guides/blob/master/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative/README.md)

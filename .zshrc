@@ -26,7 +26,7 @@ unset file;
 
 # ==============fzf===============
 # fzf ctrl-r and alt-c behavior
-export FZF_BASE="/usr/local/bin/fzf"
+export FZF_BASE="/opt/homebrew/opt/fzf/install"
 export FZF_CTRL_T_COMMAND="fd --hidden --follow --exclude \".git\" . $HOME"
 export FZF_ALT_C_COMMAND="fd -t d --hidden --follow --exclude \".git\" . $HOME"
 
