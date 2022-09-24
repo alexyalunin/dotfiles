@@ -40,7 +40,7 @@ add key to github with `cat ~/.ssh/id_rsa.pub`, then you can clone with `git clo
 7. Install apps, but first put all apple apps into one folder
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget fzf
-brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox
+brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox github
 brew install --cask transmission bitwarden cryptomator utm
 ```
 
@@ -54,10 +54,14 @@ Mac additional setting
 - touch id
 - bluetooth -> show bluetooth in menu bar
 - sound -> Uncheck the “Play user interface sound effects”
+- date time -> time zone -> set time zone auto
 - keyboard -> shortcuts -> input sources -> cmd space (fix spotlight)
+- displays -> auto adjust brightness off
+
+App settings
 - notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created
 - install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9 
-- firefox: default zoom firefox 90, pluggins (ublock, simple translate, cookies), https://www.google.com/preferences?hl=en check "Open each selected result in a new browser window", set firefox as default browser
+- firefox: default zoom firefox 90, pluggins (ublock, simple translate, cookies, Translate Web Pages), https://www.google.com/preferences?hl=en check "Open each selected result in a new browser window", set firefox as default browser
 - telegram: sounds -> sent message off, data and storage -> storage usage -> 5gb, preferences -> general -> show icon in menu bar off
 - vscode: file -> auto save
 - vlc: pref -> hotkeys -> faster fine ]
