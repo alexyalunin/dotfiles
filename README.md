@@ -10,6 +10,10 @@
 ```bash
 sudo apt install -y git && git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```
+or setup ssh and use
+```bash
+sudo apt install -y git && git clone git@github.com:alexyalunin/dotfiles.git && cd dotfiles
+```
 
 ## Linux Setup 
 
