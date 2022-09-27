@@ -40,8 +40,8 @@ add key to github with `cat ~/.ssh/id_rsa.pub`, then you can clone with `git clo
 7. Install apps, but first put all apple apps into one folder
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget fzf
-brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox github
-brew install --cask transmission bitwarden cryptomator utm
+brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox github 
+brew install --cask transmission bitwarden cryptomator utm openvpn-connect
 ```
 
 -------------
@@ -57,6 +57,8 @@ Mac additional setting
 - date time -> time zone -> set time zone auto
 - keyboard -> shortcuts -> input sources -> cmd space (fix spotlight)
 - displays -> auto adjust brightness off
+- accessibility -> zoom -> Use scroll gesture
+- Keyboard -> Keyboard Shortcuts -> app shortcuts -> + -> notes, menu title - Paste and Match Style, ⌘V
 
 App settings
 - notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created

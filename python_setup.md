@@ -70,6 +70,20 @@ nvm install node
 sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
 sudo apt-get install npm
 ```
+This can fix widgets on mac
+```
+pip install jupyterlab --upgrade
+pip install ipympl --upgrade
+
+brew install node
+pip install ipywidgets --upgrade
+
+jupyter labextension install jupyter-matplotlib jupyterlab-plotly
+
+jupyter labextension update --all 
+jupyter lab build 
+jupyter labextension list
+```
 
 ## extra
 put in .extra
