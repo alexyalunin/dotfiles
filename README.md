@@ -10,7 +10,13 @@
 ```bash
 sudo apt install -y git && git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```
-or setup ssh and use
+or setup ssh 
+```bash
+eval `ssh-agent -s`
+chmod 400 ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa` 
+```
+and use
 ```bash
 sudo apt install -y git && git clone git@github.com:alexyalunin/dotfiles.git && cd dotfiles
 ```
