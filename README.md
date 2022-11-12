@@ -14,7 +14,7 @@ or setup ssh
 ```bash
 eval `ssh-agent -s`
 chmod 400 ~/.ssh/id_rsa
-ssh-add ~/.ssh/id_rsa` 
+ssh-add ~/.ssh/id_rsa
 ```
 and use
 ```bash
