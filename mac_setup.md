@@ -1,6 +1,6 @@
 # Setup Mac
 
-1. Install Xcode via App Store
+1. Install Xcode via App Store and `xcode-select --install` in terminal
 2. Install homebrew with:
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
