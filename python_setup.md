@@ -1,3 +1,14 @@
+0. Quick Setup
+```
+sudo apt-get install python3.9-venv
+python3.9 -m venv venv3.9
+source venv3.9/bin/activate
+(maybe if pip -V returns 9.0.3) curl https://bootstrap.pypa.io/pip/3.9/get-pip.py | python -
+pip install --upgrade pip
+pip install ipython ipykernel
+python -m ipykernel install --user --name=venv3.9
+pip install jupyterlab
+```
 
 1. Install Jupyter
 ```
