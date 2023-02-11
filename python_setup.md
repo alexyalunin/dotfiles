@@ -17,6 +17,7 @@ sudo jupyter nbextension enable --py nbdime —system
 pip install --upgrade pip
 python3 -m venv venv3
 source venv3/bin/activate
+(maybe if pip -V returns 9.0.3) curl https://bootstrap.pypa.io/pip/3.6/get-pip.py | python -
 pip install --upgrade pip
 ```
 
@@ -44,6 +45,7 @@ On linux
 source venv3/bin/activate
 pip install jupyterlab
 
+# for tqdm to work
 sudo apt install nodejs
 jupyter lab —version
 jupyter labextension list
@@ -78,6 +80,12 @@ jupyter labextension update --all
 jupyter lab build 
 jupyter labextension list
 ```
+To make ssh port tunneling 
+```
+ssh -N -L localhost:8888:localhost:8888 alexyalunin@192.168.11.250
+# go to http://localhost:8888/ and paste token
+```
+
 
 ## extra
 put in .extra
