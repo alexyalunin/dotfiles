@@ -62,7 +62,7 @@ Mac additional setting
 
 App settings
 - notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created
-- install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9 
+- install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9. jetbrain toolbox -> settings -> keep prev version -> off
 - firefox: default zoom firefox 90, pluggins (ublock, simple translate, cookies, Translate Web Pages), https://www.google.com/preferences?hl=en check "Open each selected result in a new browser window", set firefox as default browser. view -> toolbars -> always show. about:config -> browser.tabs.loadBookmarksInTabs true, browser.bookmarks.editDialog.maxRecentFolders 20
 - telegram: sounds -> sent message off, data and storage -> storage usage -> 5gb, preferences -> general -> show icon in menu bar off
 - vscode: file -> auto save
