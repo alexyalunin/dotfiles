@@ -25,8 +25,6 @@ $ sudo apt install -y git && git clone git@github.com:alexyalunin/dotfiles.git &
 
 ```bash
 $ ./1_apt_install.sh && ./2_zsh_install.sh && ./3_bootstrap.sh -f
-$ exec zsh
-$ p10k configure
 ```
 Reload Linux for zsh, install python `mac_setup.md`, update `.extra`. Maybe add `zsh` at top of `.bashrc`.
 
@@ -37,5 +35,3 @@ Read `mac_setup.md` first
 $ ./2_zsh_install.sh 
 $ ./3_bootstrap.sh -f 
 $ source ./.macos
-$ exec zsh
-$ p10k configure
