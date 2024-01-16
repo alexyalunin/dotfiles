@@ -49,15 +49,5 @@ fd --type d . "$1"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # ================================
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/alexyalunin/Desktop/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/alexyalunin/Desktop/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/alexyalunin/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/alexyalunin/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
