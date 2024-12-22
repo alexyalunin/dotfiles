@@ -40,8 +40,7 @@ add key to github with `cat ~/.ssh/id_rsa.pub`, then you can clone with `git clo
 7. Install apps, but first put all apple apps into one folder
 ```
 brew install llvm cmake node graphviz boost hdf5 swig autojump ncdu tmux htop rg broot tldr wget fzf
-brew install --cask firefox google-chrome zoom visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox github maccy fig
-brew install --cask transmission bitwarden cryptomator utm openvpn-connect
+brew install --cask firefox google-chrome visual-studio-code telegram spectacle vlc eul docker jetbrains-toolbox github maccy transmission bitwarden 
 ```
 
 -------------
