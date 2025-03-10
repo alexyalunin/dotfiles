@@ -8,23 +8,23 @@
 # alexyalunin's dotfiles
 
 ```bash
-$ sudo apt install -y git && git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
+sudo apt install -y git && git clone https://github.com/alexyalunin/dotfiles.git && cd dotfiles
 ```
 or setup ssh 
 ```bash
-$ eval `ssh-agent -s`
-$ chmod 400 ~/.ssh/id_rsa
-$ ssh-add ~/.ssh/id_rsa
+eval `ssh-agent -s`
+chmod 400 ~/.ssh/id_rsa
+ssh-add ~/.ssh/id_rsa
 ```
 and use
 ```bash
-$ sudo apt install -y git && git clone git@github.com:alexyalunin/dotfiles.git && cd dotfiles
+sudo apt install -y git && git clone git@github.com:alexyalunin/dotfiles.git && cd dotfiles
 ```
 
 ## Linux Setup 
 
 ```bash
-$ ./1_apt_install.sh && ./2_zsh_install.sh && ./3_bootstrap.sh -f
+./1_apt_install.sh && ./2_zsh_install.sh && ./3_bootstrap.sh -f
 ```
 Reload Linux for zsh, install python `mac_setup.md`, update `.extra`. Maybe add `zsh` at top of `.bashrc`.
 
@@ -32,6 +32,7 @@ Reload Linux for zsh, install python `mac_setup.md`, update `.extra`. Maybe add 
 Read `mac_setup.md` first
 
 ```bash
-$ ./2_zsh_install.sh 
-$ ./3_bootstrap.sh -f 
-$ source ./.macos
+./2_zsh_install.sh 
+./3_bootstrap.sh -f 
+source ./.macos
+```
