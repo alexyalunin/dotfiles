@@ -48,15 +48,15 @@ Mac additional setting
 - desktop -> wallpaper, screen saver animation (drift)
 - users & groups -> avatar
 - display -> resolution -> scaled -> larger text, check true tone, night shift -> sunset to sunrise
-- dock and menu bar -> battery -> percentage
+- control centre -> battery -> show percentage
 - battery -> turn off display after 15 mins
 - touch id
 - bluetooth -> show bluetooth in menu bar
 - sound -> Uncheck the “Play user interface sound effects”
-- date time -> time zone -> set time zone auto
+- date time -> time zone -> set time zone auto 
 - keyboard -> shortcuts -> input sources -> cmd space (fix spotlight)
 - displays -> auto adjust brightness off
-- accessibility -> zoom -> Use scroll gesture
+- accessibility -> zoom -> Use scroll gesture with modifier ... (this will activate ctrl+scroll for zoom)
 - Keyboard -> Keyboard Shortcuts -> app shortcuts -> + -> notes, menu title - Paste and Match Style, ⌘V
 
 App settings
