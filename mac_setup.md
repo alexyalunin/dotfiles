@@ -58,6 +58,7 @@ Mac additional setting
 - displays -> auto adjust brightness off
 - accessibility -> zoom -> Use scroll gesture with modifier ... (this will activate ctrl+scroll for zoom)
 - Keyboard -> Keyboard Shortcuts -> app shortcuts -> + -> notes, menu title - Paste and Match Style, ⌘V
+- Keyboard -> text input - input sources - edit - use the caps lock
 
 App settings
 - notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created
