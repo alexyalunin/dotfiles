@@ -63,7 +63,7 @@ Mac additional setting
 App settings
 - notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created
 - install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9. jetbrain toolbox -> settings -> keep prev version -> off, Settings - Advanced Settings - Maximum number of results to show in Find In Path/Show Usages preview - 1000
-- firefox: default zoom firefox 90, pluggins (ublock, simple translate, cookies, Translate Web Pages), https://www.google.com/preferences?hl=en -> other settings -> check "Results in a new window", set firefox as default browser. view -> toolbars -> always show. about:config -> browser.tabs.loadBookmarksInTabs true, browser.bookmarks.editDialog.maxRecentFolders 20
+- firefox: default zoom firefox 90, pluggins (ublock, simple translate, cookies, Translate Web Pages), https://www.google.com/preferences?hl=en -> other settings -> check "Results in a new window", set firefox as default browser. view -> toolbars -> always show. about:config -> browser.tabs.loadBookmarksInTabs true, browser.bookmarks.editDialog.maxRecentFolders 20. Theme [Dreamer – Bold].
 - telegram: sounds -> sent message off, data and storage -> storage usage -> 5gb, preferences -> general -> show icon in menu bar off
 - vscode: file -> auto save, Keyboard Shortcuts -> navigate back: cmd [
 - vlc: pref -> hotkeys -> faster fine ]
