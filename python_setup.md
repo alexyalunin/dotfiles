@@ -6,6 +6,8 @@ source venv3.12/bin/activate
 pip install jupyterlab
 jupyter lab --no-browser --port=8888
 ssh -L 8888:localhost:8888 alexyalunin@vm_name
+╰─ pip install ipykernel
+╰─ python -m ipykernel install --user --name=venv3.12
 ```
 
 0. Quick Setup
