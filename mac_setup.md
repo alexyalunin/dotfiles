@@ -70,4 +70,4 @@ App settings
 - iterm2 -> pref -> advanced -> Scroll wheel sends arrow keys when in alternate screen mode -> no -> restart
 - remove items from menu bar with dragging to desktop (hold cmd)
 - remove items from dock (drop to launchpad)
-- [app-cleaner](https://github.com/sunknudsen/privacy-guides/blob/master/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative/README.md)
+- [app-cleaner](https://github.com/sunknudsen/guides/tree/main/archive/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative)
