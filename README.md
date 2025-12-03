@@ -26,7 +26,7 @@ sudo apt install -y git && git clone git@github.com:alexyalunin/dotfiles.git && 
 ```bash
 ./1_apt_install.sh && ./2_zsh_install.sh && ./3_bootstrap.sh -f
 ```
-Reload Linux for zsh, install python `mac_setup.md`, update `.extra`. Maybe add `zsh` at top of `.bashrc`.
+Reload Linux for zsh, install python `mac_setup.md`, update `.extra`. Maybe add `zsh` at top of `.bashrc`. Maybe take a look at `python_setup.md`.
 
 ## MacOS Setup 
 Read `mac_setup.md` first
