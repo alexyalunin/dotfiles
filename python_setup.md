@@ -1,3 +1,13 @@
+```
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3-pip python3-venv -y
+python3.12 -m venv venv3.12
+source venv3.12/bin/activate
+pip install jupyterlab
+jupyter lab --no-browser --port=8888
+ssh -L 8888:localhost:8888 alexyalunin@vm_name
+```
+
 0. Quick Setup
 ```
 sudo apt-get install python3.9-venv
