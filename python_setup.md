@@ -57,7 +57,7 @@ python -m ipykernel install --user --name=venv3
 4. Install basics
 ```
 pip install --upgrade pip
-pip install wheel ipykernel numpy pandas matplotlib seaborn scipy sklearn tqdm ipywidgets xlsxwriter
+pip install wheel ipykernel numpy pandas matplotlib seaborn scipy scikit-learn tqdm ipywidgets xlsxwriter
 ```
 
 5. Install Jupyter Lab
