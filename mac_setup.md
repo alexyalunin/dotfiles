@@ -52,7 +52,7 @@ Mac additional setting
 - battery -> turn off display after 15 mins
 - touch id
 - bluetooth -> show bluetooth in menu bar
-- sound -> Uncheck the “Play user interface sound effects”
+- sound -> off “Play user interface sound effects”, off “Play sound on startup”
 - date time -> time zone -> set time zone auto 
 - keyboard -> shortcuts -> input sources -> cmd space (fix spotlight)
 - displays -> auto adjust brightness off
