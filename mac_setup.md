@@ -72,6 +72,7 @@ App settings
   - Settings -> settings -> Integrated: Scrollback 10000
 - vlc: pref -> hotkeys -> faster fine ]
 - iterm2 -> pref -> advanced -> Scroll wheel sends arrow keys when in alternate screen mode -> no -> restart
+- maccy -> pref, storage, size 999
 - remove items from menu bar with dragging to desktop (hold cmd)
 - remove items from dock (drop to launchpad)
 - [app-cleaner](https://github.com/sunknudsen/guides/tree/main/archive/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative)
