@@ -61,7 +61,10 @@ Mac additional setting
 - Keyboard -> text input - input sources - edit - use the caps lock
 
 App settings
-- notes: view -> show folders, edit -> substitutions -> smart links, preferences -> sort notes by date created
+- notes:
+  - view -> show folders,
+  - edit -> substitutions -> smart links,
+  - preferences -> sort notes by date created
 - install jetbrains apps, to use profile: bottom right - sync plugins silently, in preferences search font, set 12 and 0.9. jetbrain toolbox -> settings -> keep prev version -> off, Settings - Advanced Settings - Maximum number of results to show in Find In Path/Show Usages preview - 1000
 - firefox:
   - default zoom firefox 90,
@@ -80,11 +83,13 @@ App settings
   - Keyboard Shortcuts -> navigate back: cmd [, navigate forward: cmd ].
   - Settings -> settings -> off Copy With Syntax Highlighting
   - Settings -> settings -> Integrated: Scrollback 10000
-- vlc: pref -> hotkeys -> faster fine ]
+- vlc:
+  - pref -> hotkeys -> faster fine ]
 - iterm2:
   - pref -> advanced -> Scroll wheel sends arrow keys when in alternate screen mode -> no -> restart.
   - pref - profiles - terminal - scrollback lines - 20000
-- maccy -> pref, storage, size 999
+- maccy
+  - pref, storage, size 999
 - remove items from menu bar with dragging to desktop (hold cmd)
 - remove items from dock (drop to launchpad)
 - [app-cleaner](https://github.com/sunknudsen/guides/tree/main/archive/how-to-clean-uninstall-macos-apps-using-appcleaner-open-source-alternative)
