@@ -7,7 +7,10 @@ import myutils
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import seaborn as sns
+try:
+    import seaborn as sns
+except:
+    sns = None
 
 import importlib 
 import collections
