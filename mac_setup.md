@@ -59,6 +59,7 @@ Mac additional setting
 - accessibility -> zoom -> Use scroll gesture with modifier ... (this will activate ctrl+scroll for zoom)
 - Keyboard -> Keyboard Shortcuts -> app shortcuts -> + -> notes, menu title - Paste and Match Style, ⌘V
 - Keyboard -> text input - input sources - edit - use the caps lock
+- Desktop & Dock -> Hot Corners... -> remove
 
 App settings
 - notes:
