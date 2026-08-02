@@ -179,8 +179,11 @@ def print_torch(torch):
     n_gpu = torch.cuda.device_count()
     print("python:", sys.version)
     print("torch:", torch.__version__)
-    print("CUDA_VISIBLE_DEVICES:", os.environ.get('CUDA_VISIBLE_DEVICES', None))
-    print(f'use_cuda: {use_cuda}, n_gpu: {n_gpu}, device: {device}, devices:{[torch.cuda.get_device_name(i) for i in range(n_gpu)]}')
+    print("CUDA_VISIBLE_DEVICES:", os.environ.get("CUDA_VISIBLE_DEVICES", None))
+    print(f"use_cuda: {use_cuda}")
+    print(f"n_gpu: {n_gpu}")
+    print(f"device: {device}")
+    print(f"devices:{[torch.cuda.get_device_name(i) for i in range(n_gpu)]}")
     return use_cuda, device, n_gpu
 
 
