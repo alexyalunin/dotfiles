@@ -28,6 +28,17 @@ sudo ./1_apt_install.sh && sudo ./2_zsh_install.sh && sudo ./3_bootstrap.sh -f
 ```
 Reload Linux for zsh, install python `mac_setup.md`, update `.extra`. Maybe take a look at `python_setup.md`.
 
+run
+```bash
+cat >> ~/.bashrc <<'EOF'
+
+# Interactive-only zsh handoff. MUST stay below the non-interactive guard above:
+# a bare `zsh` at the top of .bashrc hijacks sshd's `bash -c sftp-server`,
+# which breaks scp/sftp and hangs VS Code Remote-SSH.
+[ -z "$ZSH_VERSION" ] && [ -x /usr/bin/zsh ] && exec zsh
+EOF
+```
+
 ## MacOS Setup 
 Read `mac_setup.md` first
 
